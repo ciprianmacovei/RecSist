@@ -1,0 +1,75 @@
+<div class="container">
+  <app-permanent-header></app-permanent-header>
+  <mat-spinner class="centerSpinner" *ngIf="spinnerBoolean"></mat-spinner>
+  <div class="containsAll" *ngIf="filtersLoaded | async">
+    <div>
+      <ul class="list-group" style="width: 500px">
+        <li class="list-group-item bg-inverse" style="border-radius: 4px;color: white">
+          <p style="text-align: center">{{selectedItem?.nume}}</p>
+        </li>
+        <li class="list-group-item">{{selectedItem?.descriere}}</li>
+        <li class="list-group-item"><img src="{{selectedItem?.imagePath}}"
+            style="margin-left:30%;max-width: 300px;max-height:200px "></li>
+        <li class="list-group-item">
+          <p style="text-align: center;">Quantity:{{quantity}}
+        </li>
+        <li class="list-group-item">
+          <p style="justify-content: center;display: flex;font-size: 12px">Price:{{selectedItem?.price.toFixed(2)}}$</p>
+        </li>
+        <li class="list-group-item">
+          <div style="display:flex;flex-direction: column;">
+            <div class="rating" style="justify-content: center;display: flex;align-items: center"
+              (click)="rating($event)">
+              <span value="5" class="stea">☆</span><span class="stea" value="4">☆</span><span class="stea"
+                value="3">☆</span><span class="stea" value="2">☆</span><span class="stea" value="1">☆</span>
+
+              <input type="hidden" name="whatever1" class="rating-value" value="0">
+            </div>
+            <div style="justify-content: center;display: flex;align-items: center">
+              <button class="btn btn-warning" (click)="sendRateItem()">Rate Items</button>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item" style="justify-content: center;display: flex"><button type="submit"
+            class="btn btn-success" (click)="buyProduct($event)">Buy</button></li>
+      </ul>
+    </div>
+
+    <div class="displayCommentAndRecommender">
+
+      <div class="ml-4">
+        <app-comment-box></app-comment-box>
+      </div>
+
+      <div class="ml-4 recommenderItems" *ngIf="this.recommendedItems">
+        <div class="recommendItemsPannel">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <p style="text-align:center;font-weight: bolder;font-size: 18px">We Recommend to you the following products</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:row">
+            <div class="cards-list" *ngFor="let item of recommendedItems">
+              <a :href="/itemDetail/{{item.asin}}" style="text-decoration: none">
+                <div class="card 1">
+                  <div class="card_image"> <img src="{{item.imagePath}}" /> </div>
+                  <div class="card_title title-white">
+                    <ng-container *ngIf="!!item.nume; then thenBlock; else elseBlock"></ng-container>
+                    <ng-template #thenBlock>
+                      <strong style="color:#004466;font-size:20px;">{{item?.nume.slice(0,10)}}...</strong>
+                    </ng-template>
+
+                    <ng-template #elseBlock>
+                      <p>Uknown Name</p>
+                    </ng-template>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>

@@ -1,0 +1,107 @@
+@import 'https://fonts.googleapis.com/css?family=Ubuntu+Condensed';
+
+
+ul{
+	list-style-type: none;
+}
+.liTitleName{
+	font-size: 14px;
+}
+
+.logoAndLogin{
+	display: flex;
+	flex-direction: row;
+}
+
+.logonAndLogin {
+	display: inline;
+}
+
+.logoAndLogin > .mt-4 {
+	float:left;
+}
+
+.userPannel{
+	margin-left: 40em;
+}
+
+.pictureCarousel {
+	max-width: 600px;
+	width: auto;
+	height: 350px;
+}
+
+#carouselExampleIndicators {
+
+	border:10px solid grey;
+	border-radius: 5px;
+}
+
+.secondBorder{
+	border:10px solid darkblue;
+	border-radius: 15px;
+}
+
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.social {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 16px;
+  margin-right: 16px;
+  background-color: rgba(231, 231, 231, 0.6);
+  box-shadow: 8px 8px 0 0px rgba(0, 0, 0, 0.25);
+}
+
+nav {
+  padding-top: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a:hover {
+  opacity: 0.7;
+}
+
+nav ul li a.twitter {
+  border-left: 50px solid #00a0d1;
+  color: #00a0d1;
+}
+
+nav ul li a.facebook {
+  border-left: 50px solid #365998;
+  color: #365998;
+}
+
+nav ul li a.github {
+  border-left: 50px solid #4183c4;
+  color: #4183c4;
+}
+
+
+nav ul li a.tumblr {
+  border-left: 50px solid #34526f;
+  color: #34526f;
+}

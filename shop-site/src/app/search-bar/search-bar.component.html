@@ -1,0 +1,35 @@
+<div class="col-lg-4 col-md-6 col-sm-12">
+	<!-- <input  type="text" name="searchBox" placeholder="search..." [(ngModel)]="query"> -->
+	<input #search class="searchBox" (keyup)="keyUpSearch($event)" [(ngModel)]="searchQuery">
+	<!-- <ul *ngIf="results && searchQuery.length != 0 ">
+	  <li *ngFor="let result of results">
+	    <a href="" target="_blank">
+	      {{ result.nume }}
+	    </a>
+	  </li>
+	</ul> -->
+		
+</div>
+
+	<div class="list-group searchResults" *ngIf="results && searchQuery.length != 0">
+		  <a :href="/itemDetail/{{result.asin}}" *ngFor="let result of results"  class="list-group-item list-group-item-action flex-column align-items-start active">
+		    <div class="d-flex w-100 justify-content-between">
+		      <small class="mb-1">{{result.nume}}</small>
+		    </div>
+		    <!-- <p class="mb-1">{{result.descriere}}</p> -->
+		    <small>Quantity: {{result.number}}</small>
+		    <hr>
+		  </a>
+	</div>
+	
+<!-- 
+<div class="list-group">
+  <a href="#" *ngFor="let result of results"  class="list-group-item list-group-item-action flex-column align-items-start active">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{restult.name}}</h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">{{result.descriere}}</p>
+    <small>Donec id elit non mi porta.</small>
+  </a>
+</div> -->

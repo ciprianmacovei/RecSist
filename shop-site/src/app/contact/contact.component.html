@@ -1,0 +1,116 @@
+<div class="container">
+	<app-permanent-header></app-permanent-header>	
+	<div class="row mt-4">
+			<div class="card">
+			  <div class="card-header">
+			    Contact
+			  </div>
+			  <div class="card-body">
+			    <h5 class="card-title">Special Support for our clients</h5>
+			    <p class="card-text">A support employee will answear your questions by clicking the button bellow</p>
+			    <button (click)="openModal(chatbot)" class="btn btn-primary centerFlex">Ask Question</button>
+			  </div>
+			</div>
+	</div>
+
+	<div class="row" style="margin-top: 2em;margin-bottom: 2em">
+			<div class="card">
+			  <div class="card-header">
+			    Map Where u can find us
+			  </div>
+			  <div class="card-body">
+			    <h5 class="card-title">Google Map where u can find us</h5>
+			    <iframe
+				  width="600"
+				  height="450"
+				  frameborder="0" style="border:0"
+				  src="https://www.google.com/maps/embed/v1/place?q=44.42552,26.09482&amp;key=AIzaSyCMewlddeDEbntlAfuuC2H4PZ7LF3u9B1k
+				    &q=Space+Needle,Seattle+WA" allowfullscreen>
+				</iframe>
+				<!-- q=40.7127837,-74.0059413&amp;
+			    AIzaSyCMewlddeDEbntlAfuuC2H4PZ7LF3u9B1k -->
+
+			    <p class="card-text centerFlex">NR : +00754675499</p>
+			  </div>
+			</div>
+	</div>
+		
+
+</div>
+
+
+
+
+	<ng-template #chatbot>
+					<div class="container">
+						    <div class="row">
+						        <div class="col-md-12">
+						            <div class="panel panel-primary">
+						                <div class="panel-heading" id="accordion">
+						                    <span class="glyphicon glyphicon-comment"></span> Chat
+						                </div>
+						            <div class="panel" id="collapseOne scrollbar ">
+						                <div class="panel-body scrollbar">
+						                    <ul class="chat">
+						                        <li class="clearfix"><span class="chat-img pull-left">
+						                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+						                             <h6><span class="badge badge-secondary">Support</span></h6>
+						                        </span>
+						                            <div class="chat-body clearfix">
+						                                <div class="header">
+						                                    <small class="pull-right text-muted">
+						                                        <span class="glyphicon glyphicon-time"></span>{{today | date:'h:mm a'}}</small>
+						                                </div>
+						                                <p style="margin-left: 5px">
+						                                    Hello!
+						                                </p>
+						                            </div>
+						                        </li>
+						                   <div *ngFor="let i of chatWithBotAndUser">
+						     			        <li  class="right clearfix">
+						                        	<span class="chat-img pull-right">
+						                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+						                            <h6><span class="badge badge-secondary">{{currnetUser}}</span></h6>
+						                        </span>
+						                            <div class="chat-body clearfix">
+						                                <div class="header">
+						                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>{{newDate | date:'h:mm a'}}</small>
+						                                </div>
+						                                <p>
+						                                    {{i.user}}
+						                                </p>
+						                            </div>
+						                        </li>
+
+						     			        <li class="right clearfix">
+						                        	<span class="chat-img pull-right">
+						                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+						                            <h6><span class="badge badge-secondary">Support</span></h6>
+						                        </span>
+						                            <div class="chat-body clearfix">
+						                                <div class="header">
+						                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>{{newDate | date:'h:mm a'}}</small>
+						                                </div>
+						                                <p id="aici">
+						                                    {{i.bot}}
+						                                </p>
+						                            </div>
+						                        </li>
+						                    </div>    
+						                    </ul>
+						                </div>
+						                <div class="panel-footer">
+						                    <div class="input-group">
+						                        <input id="btn-input" type="text" (keyup.enter)="sendChatBotMessage($event)" class="form-control input-sm sendMessage" placeholder="Type your message here..." />
+						                        <span class="input-group-btn">
+						                            <button (click)="sendChatBotMessage($event)" class="btn btn-warning btn-sm" id="btn-chat">
+						                                Send</button>
+						                        </span>
+						                    </div>
+						                </div>
+						            </div>
+						            </div>
+						        </div>
+						    </div>
+						</div>
+			</ng-template>

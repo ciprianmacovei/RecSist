@@ -1,0 +1,29 @@
+<div class="wrapper fadeInDown">
+	<div id="formContent">
+	  <!-- Tabs Titles -->
+	  <h2 class="active"> Sign In </h2>
+	  <a href="/register"><h2 class="inactive underlineHover">Sign Up </h2></a>
+  
+	  <!-- Icon -->
+	  <div class="fadeIn first">
+			<h4><span class="badge badge-default">ShopyFy</span></h4>
+		</div>
+  
+	  <!-- Login Form -->
+	  <form>
+		<input id="emailBox" type="text" class="fadeIn second" name="login" placeholder="login" #email >
+		<input id="passwordBox" type="password" class="fadeIn third" name="login" placeholder="password" #password >
+
+		<button class="fadeIn fourth my-2 btn btn-primary" value="Login" (click)="login(email.value,password.value)">Log In</button>
+
+	  </form>
+	  <div *ngIf="error">
+		<p style="color: red">Username or password is incorrect</p>
+	  </div>
+	  <!-- Remind Passowrd -->
+	  <div id="formFooter">
+		<a class="underlineHover" href="/forgetpassword">Forgot Password?</a>
+	  </div>
+  
+	</div>
+  </div>

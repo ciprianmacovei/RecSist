@@ -1,0 +1,24 @@
+<div class="grid-container" >
+	<div class="grid-item" *ngFor="let item of itemsOferte;index as i">
+			
+		<!-- <div class="row"> -->
+
+			<!-- <div > -->
+				<div class="card " >
+				  <img class="card-img-top" src="" alt="Card image cap">
+				  {{i}}
+				  <div class="card-body">
+				    <p class="card-text">{{item.numeprodus}}</p>
+				  </div>
+				</div>
+				<!-- <div [ngClass]="{'float-right':i%3===0,'float-left':i%3!==0}">
+					asdsadsa
+				</div>
+				<div class="float-right">
+					asdsadsa
+				</div> -->
+			<!-- </div> -->
+			
+		<!-- </div> -->
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<div class="card logInUserSection" *ngIf="showLoginPannel!=0">
+		<div >
+			<img class="card-img-top " src="../assets/icons8-user-96.png" alt="Card image cap" style="float:left;width: auto;height: auto;max-width: 67px;max-height: 67px">
+			
+		</div>
+		<div class="row welcomePannel">
+				<p>Welcome <a href="/loginCredencials" (click)="populateCredentialPannel()" class="user">{{this.userName}}</a></p>
+				<div style="float:right;" >
+						<button (click)="logOut($event)" class="btn btn-sm btn-secondary">Log Out</button>
+				</div>
+		</div>
+		<hr *ngIf="basketItemBoolean" class="my-2">
+		<div *ngIf="basketItemBuy.length !=0 ">
+		<div *ngIf="basketItemBoolean" class="ml-2">
+
+				<div class="float-left" >
+					<button (click)="goBasket($event)" class="btn btn-sm btn-success float-left mr-2">Go Basket</button>	
+					<button (click)="emptryBasket($event)" class="btn btn-sm btn-danger float-right mr-2">Empty Basket</button>
+					<br>
+					<span class="badge badge-info my-2">Basket: {{basketItemBuy.length}}</span>
+			
+				</div>
+		</div>
+		</div>	
+</div>

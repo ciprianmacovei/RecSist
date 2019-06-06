@@ -1,0 +1,19 @@
+.logInUserSection{
+	display: inline-block;
+	width: auto;
+	position:absolute;
+	z-index: 1;
+}
+
+.logInUserSection > div{
+	margin-bottom: 5px;
+}
+
+.row {
+	margin-left: 1em;
+}
+
+
+.welcomePannel > p{
+	margin:0 2em 0 0 !important;
+}

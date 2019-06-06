@@ -1,0 +1,15 @@
+
+.grid-container{
+	display:flex;
+	flex-wrap: wrap;
+	height: 400px;
+	align-content: space-between;
+	flex-direction: column;
+  	width: 500px;
+}
+.grid-item{
+	overflow-y: scroll;
+	width: 200px;
+	max-height: 150px;
+	flex-grow: 2;
+}

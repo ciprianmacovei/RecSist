@@ -1,0 +1,17 @@
+
+.logoAndLogin{
+	display: flex;
+	flex-direction: row;
+}
+
+.logonAndLogin {
+	display: inline;
+}
+
+.logoAndLogin > .mt-4 {
+	float:left;
+}
+
+.userPannel{
+	margin-left: 40em;
+}

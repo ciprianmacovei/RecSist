@@ -1,0 +1,34 @@
+
+
+
+
+<div class="container">
+  
+  <div class="card-media" *ngFor="let item of arrayOfItems">
+    <!-- media container -->
+    <div class="card-media-object-container">
+      <img class="card-media-object" src="{{item.imagePath}}">
+      <span class="card-media-object-tag subtle">Selling Fast</span>
+    </div>
+    <!-- body container -->
+    <div class="card-media-body">
+      <div class="card-media-body-top">
+        <span class="subtle">Selling fast</span>
+        <div class="card-media-body-top-icons u-float-right">
+        
+        </div>
+      </div>
+      <span class="card-media-body-heading text" *ngIf="item.nume.length>200">{{item.nume}}</span>
+      <span class="card-media-body-heading " *ngIf="item.nume.length<200">{{item.nume}}</span>
+
+      <div class="card-media-body-supporting-bottom">
+        <span class="card-media-body-supporting-bottom-text subtle">Top Items</span>
+        <span class="card-media-body-supporting-bottom-text subtle u-float-right">Free &ndash; {{item.price}}$</span>
+      </div>
+      <div class="card-media-body-supporting-bottom card-media-body-supporting-bottom-reveal">
+        <span class="card-media-body-supporting-bottom-text subtle">{{item.category[0].slice(-1)[0]}}</span>
+        <a href="/itemDetail/{{item.asin}}" class="card-media-body-supporting-bottom-text card-media-link u-float-right">Buy item</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.listingNice{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.listingNice > *{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+

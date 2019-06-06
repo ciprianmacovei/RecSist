@@ -1,0 +1,25 @@
+<div class="container">
+	<app-permanent-header></app-permanent-header>
+
+	<div class="card" style="margin-top:4em;" *ngIf="backetItems.length === 0">
+		<h5 class="card-header">Your Basket is empty</h5>
+		<div class="card-body">
+			<h5 class="card-title">Thank you for your time</h5>
+			<p class="card-text">If you want to buy some other items go to the main page</p>
+			<a href="/home" class="btn btn-primary">Go to homepage</a>
+		</div>
+	</div>
+
+	<ul class="list-group" style="width: 50%;margin: 5em;" *ngIf="backetItems.length != 0">
+		<li class="list-group-item text-center active">List items</li>
+		
+	  <li class="list-group-item mt-2" *ngFor="let i of backetItems" class="listingNice">
+			<p class="my-2">	{{i}}</p>
+			<button class="btn btn-danger mx-2 my-2" (click)="deleteThisItem($event)">X</button>
+		</li>
+
+	  <div class="d-flex justify-content-center" style="margin-top:1em">
+	  	<button class="btn btn-primary" (click)="purchaceItems($event)">Purchace</button>
+	  </div>
+	</ul>
+</div>

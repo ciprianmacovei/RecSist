@@ -1,0 +1,123 @@
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   color: yellow;
+}
+
+.rating-selected {
+   position: absolute;
+   color: yellow;
+}
+
+.yellow{
+  color: yellow;
+}
+
+
+.containsAll {
+  display:flex;
+  flex-direction: row;
+}
+
+
+.displayCommentAndRecommender{
+  display: flex;
+  flex-direction: column;
+}
+
+.recommenderItems {
+  padding-left: 4em;
+}
+
+.card_1 {
+    background-color: #6699cc;
+    border: 1px;
+    margin: 1px;
+}
+
+.recommendItemsPannel{
+  display: flex;
+  flex-direction: column;
+}
+
+.img-fluid{
+  width: 100px;
+  height: 80px;
+}
+
+.centerSpinner{
+  position: absolute;
+  left:28em;
+  top:20em;
+}
+
+.cards-list {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  margin-left: 1em;
+}
+
+.card {
+  margin: 30px auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 30px;
+box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.card .card_image {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+
+.card .card_image img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.card .card_title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: -80px;
+  height: 40px;
+}
+
+.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+
+.title-white {
+  color: white;
+}
+
+.title-black {
+  color: black;
+}
+
+@media all and (max-width: 500px) {
+  .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}

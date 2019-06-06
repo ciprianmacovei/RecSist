@@ -1,0 +1,16 @@
+.centerFlex {
+  display: flex!important;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnMargins{
+	margin-left: 1em;
+}
+.textSize{
+	font-size: 10px;
+}
+.itemMaxWidth{
+	max-height: 300px !important;
+	max-width: 200px !important;
+}

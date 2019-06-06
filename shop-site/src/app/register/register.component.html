@@ -1,0 +1,152 @@
+<!-- <div class="container mt-5 ml-5">
+  <div [formGroup]="myform">
+    <div class="row">
+	  <div class="col-md-3"></div>	
+      <div class="col-md-4">
+        <h2>Register New User</h2>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-4">
+        <div class="form-group" [ngClass]="{'has-danger':myform.controls.email.invalid && myform.controls.email.touched }">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+            <input type="email" name="email" class="form-control" id="email" [(ngModel)]="this.registerUsers.Email"
+              placeholder="your@email.com" formControlName="email">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-control-feedback" *ngIf="myform.controls.email.invalid && myform.controls.email.dirty">
+          <span class="text-danger align-middle">
+            Email is Invalid
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [formGroup]="myform">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-4">
+        <div class="form-group" [ngClass]="{'has-danger':myform.controls.password.invalid && myform.controls.password.touched}">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+            <input type="password" name="password" class="form-control" id="password" [(ngModel)]="this.registerUsers.Password"
+              placeholder="Password" formControlName="password">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-control-feedback" *ngIf="myform.controls.password.invalid && myform.controls.password.dirty">
+          <span class="text-danger align-middle">
+            Password is too Short
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [formGroup]="myform">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem">
+              <i class="fa fa-repeat"></i>
+            </div>
+            <input type="password" name="password-confirmation" class="form-control" id="password-confirm" placeholder="Confirm Password"
+              formControlName="confirmPassword">
+          </div>
+        </div>
+      </div>
+    <div class="col-md-4">
+    <div class="form-control-feedback mb-3" *ngIf="myform.controls.confirmPassword.errors?.MatchPassword && myform.controls.confirmPassword.dirty && myform.controls.password.dirty">
+      <span class="text-danger align-middle">
+        Passwords are not the same
+      </span>
+    </div>
+  </div>
+  </div>
+
+  <div class="row">
+	<div class="col-md-3"></div>
+    <div class="col-md-4">
+      <div class="d-flex justify-content-center">
+      <button type="submit" [formGroup]="myform" class="btn btn-success" (click)="register()"><i class="fa fa-user-plus"></i>
+        Register</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+ -->
+
+
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <a routerLink="/login">
+      <h2 class="underlineHover"> Sign In </h2>
+    </a>
+    <a routerLink="/register">
+      <h2 class="underlineHover active">Sign Up </h2>
+    </a>
+
+    <div class="fadeIn first">
+      <h4><span class="badge badge-default">ShopyFy</span></h4>
+    </div>
+
+    <form (ngSubmit)="register()" [formGroup]="myform">
+
+      <input id="emailBox" type="text" class="fadeIn second" name="login" placeholder="Email" formControlName="email">
+      <div class="col-md-offset-4">
+        <div class="form-control-feedback" *ngIf="myform.controls.email.invalid && myform.controls.email.dirty">
+          <span class="text-danger align-middle">
+            Email is Invalid
+          </span>
+        </div>
+      </div>
+
+
+      <input id="passwordBox" type="password" class="fadeIn third" name="login" placeholder="Password"
+        formControlName="password">
+      <div class="col-md-offset-4">
+        <div class="form-control-feedback" *ngIf="myform.controls.password.invalid && myform.controls.password.dirty">
+          <span class="text-danger align-middle">
+            Password is too Short
+          </span>
+        </div>
+      </div>
+
+
+      <input type="password" name="password-confirmation" class="form-control" id="password-confirm"
+        placeholder="Confirm Password" formControlName="confirmPassword">
+      <div class="col-md-offset-4">
+        <div class="form-control-feedback mb-3"
+          *ngIf="myform.controls.confirmPassword.errors?.MatchPassword && myform.controls.confirmPassword.dirty && myform.controls.password.dirty">
+          <span class="text-danger align-middle">
+            Passwords are not the same
+          </span>
+        </div>
+      </div>
+
+
+        <button type="submit" class="fadeIn fourth my-2 btn btn-primary" value="register">Register</button>
+
+    </form>
+    <div *ngIf="error">
+      <p style="color: red">Username or password is incorrect</p>
+    </div>
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="/forgetpassword">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>
