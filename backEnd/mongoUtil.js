@@ -1,18 +1,25 @@
-var MongoClient = require( 'mongodb' ).MongoClient;
+const mongoClient = require('mongodb').MongoClient;
+const mongoDbUrl = 'mongodb://127.0.0.1:27017';
 
-var _db;
 
+let mongodb;
+
+function connect(callback){
+    mongoClient.connect(mongoDbUrl, (err, client) => {
+        mongodb = client.db('shopsite');
+        callback();
+    });
+}
+function get(){
+    return mongodb;
+}
+
+function close(){
+    mongodb.close();
+}
 
 module.exports = {
-
-    connectToServer: function( callback ) {
-      MongoClient.connect( "mongodb://localhost:27017/shopsite", function( err, db ) {
-        _db = db;
-        return callback( err );
-      });
-    },
-  
-    getDb: function() {
-      return _db;
-    }
+    connect,
+    get,
+    close
 };
