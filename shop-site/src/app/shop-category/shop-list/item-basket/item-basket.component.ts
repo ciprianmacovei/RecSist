@@ -14,15 +14,18 @@ export class ItemBasketComponent implements OnInit {
 
 	private backetItems: any;
 	private totalBasketItems: number;
+	private itemsID:string[];
 
-	constructor(private toastr: ToastrService, private nav: Router, private comm: ComunicationService, private is: ItemsService) {
+	constructor(private toastr: ToastrService,
+              private nav: Router,
+              private comm: ComunicationService,
+              private is: ItemsService) {
 		this.boughtItems();
-
-		console.log(this.backetItems,'muie');
 	}
 
 	ngOnInit() {
 		this.totalBasketItems = this.backetItems.length;
+
 	}
 
 	deleteThisItem(e) {
@@ -39,24 +42,16 @@ export class ItemBasketComponent implements OnInit {
 	}
 
 	boughtItems() {
-
-		sessionStorage.getItem('buyArrayNames') ? this.backetItems = sessionStorage.getItem('buyArrayNames').split(',') : this.backetItems = [];
-		
+    sessionStorage.getItem('buyArrayNames') ? this.backetItems = sessionStorage.getItem('buyArrayNames').split(',') : this.backetItems = [];
+    sessionStorage.getItem('buyArray') ? this.itemsID = sessionStorage.getItem('buyArray').split(',') : this.itemsID = [];
 	}
 
-	purchaceItems(event) {
-		this.toastr.success('Items BucketList', 'Purchace Complete'); // nu se vede 
-		this.is.buyItems(this.backetItems);
+	purchaceItems() {
+		this.is.buyItems(this.itemsID).then((res) => {
+      if (res) this.nav.navigate(['home']);
+    });
 		sessionStorage.setItem('basketItem', 'false');
-		console.log(event)
-		sessionStorage.removeItem('buyArray')
-		let self = this;
-		setTimeout(function () {
-			self.nav.navigate(['home']);
-			location.reload();
-		}, 500)
-
-
+		sessionStorage.removeItem('buyArray');
 	}
 
 }

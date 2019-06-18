@@ -16,7 +16,7 @@ export class CommentBox implements OnInit {
 
 public id:any;
 public arrayOfComments:any;
-public text:string;
+
 
   constructor(private item:ItemsService,private activeRouter:ActivatedRoute,private zone:NgZone) {
   	this.getParamId();
@@ -35,13 +35,7 @@ public text:string;
   }
 
 
-  postReviewsForItem(){
-    console.log(JSON.parse(sessionStorage.getItem("currentUser")).reviewerID,'asdasdsadsadsadas')
-      let reviewerID = JSON.parse(sessionStorage.getItem("currentUser")).reviewerID;
-      let reviewerName = JSON.parse(sessionStorage.getItem("currentUser")).user;
-      this.item.postComment(reviewerName,reviewerID,this.id,this.text);
-      location.reload();
-  }
+
  
   getParamId(){
   	this.activeRouter.params.subscribe( params => {this.id=params.id;})

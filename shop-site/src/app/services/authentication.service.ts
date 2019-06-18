@@ -76,13 +76,12 @@ export class AuthenticationService {
         // this.authUser = null;
         sessionStorage.clear();
         localStorage.clear();
-        location.reload();
         resolve(true);
       } catch (err) {
-        resolve(false)
+        resolve(false);
         console.log(err);
       }
-    })
+    });
     return promise;
   }
 

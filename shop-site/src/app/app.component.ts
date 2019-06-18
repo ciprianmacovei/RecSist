@@ -21,14 +21,12 @@ export class AppComponent implements OnDestroy,OnInit,AfterViewInit,AfterViewChe
 	public navbar:any;
 	
 	constructor(private auth:AuthenticationService,private router:Router,private comm:ComunicationService){
-  		this.loginPanelName();
+    this.loginPanelName();
 		this.buyPanelItem();
-		console.log(sessionStorage.length!=1,'asdasdasdasda')
 		this.navbar = sessionStorage.length!=1;
 	}
 
 	ngOnInit(){
-		// this.ShoppingListItem();
 
 	}
 
@@ -37,18 +35,11 @@ export class AppComponent implements OnDestroy,OnInit,AfterViewInit,AfterViewChe
 	}
 
 	ngAfterViewChecked(){
-		// localStorage.clear();
 	}
 
 
 	ngOnDestroy(){
 		this.subscription.unsubscribe();
-	}
-
-	logOut(event){
-		this.auth.logout();
-		this.router.navigate(['login']);
-		event.path[3].style.display="none";
 	}
 
 	loginPanelName(){
@@ -62,9 +53,9 @@ export class AppComponent implements OnDestroy,OnInit,AfterViewInit,AfterViewChe
 		this.subscription = this.comm.getObject().subscribe( (res) => {this.basketItemBoolean = res.data.data;
 																		this.basketItemBuy.push(res.data.item);
 																		sessionStorage.setItem('basketItem','true');
-																		sessionStorage.setItem('buyArray',this.basketItemBuy.toString())
+																		sessionStorage.setItem('buyArray',this.basketItemBuy.toString());
 																		this.basketItemBuy = sessionStorage.getItem('buyArray').split(',')
-																		})
+																		});
 		this.basketItemBoolean = sessionStorage.getItem('basketItem') === 'true';
 		if (sessionStorage.getItem('buyArray'))
 		{

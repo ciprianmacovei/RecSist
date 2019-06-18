@@ -1,6 +1,15 @@
-<div class="col-lg-4 col-md-6 col-sm-12">
+<div>
 	<!-- <input  type="text" name="searchBox" placeholder="search..." [(ngModel)]="query"> -->
-	<input #search class="searchBox" (keyup)="keyUpSearch($event)" [(ngModel)]="searchQuery">
+<!--	<input #search class="searchBox" (keyup)="keyUpSearch($event)" [(ngModel)]="searchQuery">-->
+  <div class="container ">
+
+    <div class="row center">
+      <div class="search-ber">
+        <input id="reset-this-parent"type="text" placeholder="Search on ShopyFy..." (keyup)="keyUpSearch($event)" [(ngModel)]="searchQuery" #search>
+        <i class="fas fa-search"></i>
+      </div>
+    </div>
+  </div>
 	<!-- <ul *ngIf="results && searchQuery.length != 0 ">
 	  <li *ngFor="let result of results">
 	    <a href="" target="_blank">
@@ -9,19 +18,30 @@
 	  </li>
 	</ul> -->
 		
+<div class="row d-flex justify-content-center">
+	<div class="list-group searchResults d-flex justify-content-center" *ngIf="results && searchQuery.length != 0">
+		  <a :href="/itemDetail/{{result.asin}}" *ngFor="let result of results"  class="list-group-item list-group-item-action flex-column align-items-start active">
+        <div class="card bg-secondary">
+          <div class="card-body">
+            <div class="d-flex w-100 justify-content-between">
+              <small class="mb-1">{{result.nume}}</small>
+            </div>
+          </div>
+        </div>
+
+		    <!-- <p class="mb-1">{{result.descriere}}</p> -->
+          <div class="bg-dark card">
+            <div class="d-flex justify-content-center">
+            <small>Quantity: {{result.number}}</small>
+            </div>
+          </div>
+        <hr>
+      </a>
+
+	</div>
+</div>
 </div>
 
-	<div class="list-group searchResults" *ngIf="results && searchQuery.length != 0">
-		  <a :href="/itemDetail/{{result.asin}}" *ngFor="let result of results"  class="list-group-item list-group-item-action flex-column align-items-start active">
-		    <div class="d-flex w-100 justify-content-between">
-		      <small class="mb-1">{{result.nume}}</small>
-		    </div>
-		    <!-- <p class="mb-1">{{result.descriere}}</p> -->
-		    <small>Quantity: {{result.number}}</small>
-		    <hr>
-		  </a>
-	</div>
-	
 <!-- 
 <div class="list-group">
   <a href="#" *ngFor="let result of results"  class="list-group-item list-group-item-action flex-column align-items-start active">

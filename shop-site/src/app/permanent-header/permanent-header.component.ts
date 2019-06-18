@@ -45,12 +45,6 @@ export class PermanentHeaderComponent implements OnDestroy, OnInit, AfterViewIni
 		this.subscription.unsubscribe();
 	}
 
-	logOut(event) {
-		this.auth.logout();
-		this.router.navigate(['login']);
-		event.path[3].style.display = "none";
-	}
-
 	loginPanelName() {
 		this.showLoginPannel = sessionStorage.length;
 		if (sessionStorage.length != 0) {
@@ -73,19 +67,6 @@ export class PermanentHeaderComponent implements OnDestroy, OnInit, AfterViewIni
 			this.basketItemBuy = sessionStorage.getItem('buyArray').split(',');
 		}
 
-	}
-
-	emptryBasket(event) {
-		location.reload();
-		sessionStorage.setItem('basketItem', 'false');
-		event.path[1].style.display = 'none';
-		sessionStorage.removeItem('buyArray')
-		this.itemList = '';
-		this.basketItemBuy = [];
-	}
-
-	goBasket() {
-		this.router.navigate(['itemBasket']);
 	}
 
 
