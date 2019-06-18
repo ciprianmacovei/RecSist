@@ -14,7 +14,7 @@
 		<div *ngIf="basketItemBoolean" class="ml-2">
 
 				<div class="float-left" >
-					<button (click)="goBasket($event)" class="btn btn-sm btn-success float-left mr-2">Go Basket</button>	
+					<button (click)="goBasket()" class="btn btn-sm btn-success float-left mr-2">Go Basket</button>
 					<button (click)="emptryBasket($event)" class="btn btn-sm btn-danger float-right mr-2">Empty Basket</button>
 					<br>
 					<span class="badge badge-info my-2">Basket: {{basketItemBuy.length}}</span>

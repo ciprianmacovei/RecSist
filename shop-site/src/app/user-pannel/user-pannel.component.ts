@@ -82,11 +82,9 @@ export class UserPannelComponent implements OnInit {
 	emptryBasket(event) {
 		sessionStorage.setItem('basketItem', 'false');
 		event.path[1].style.display = 'none';
-		sessionStorage.removeItem('buyArray')
+		sessionStorage.removeItem('buyArray');
 		this.itemList = '';
 		this.basketItemBuy = [];
-		location.reload();
-		this.router.navigate(['home']);
 
 	}
 

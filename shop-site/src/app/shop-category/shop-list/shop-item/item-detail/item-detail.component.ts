@@ -5,7 +5,12 @@ import { ComunicationService } from '../../../../services/comunication.service';
 import { RecommenderService } from '../../../../services/recommender.service';
 import { ToastrService } from 'ngx-toastr';
 import * as $ from 'jquery';
-import { Subscribable } from 'rxjs';
+
+
+interface recomandationAndComments {
+  item:any[],
+  reviews:any[]
+}
 
 @Component({
   selector: 'app-item-detail',
@@ -18,13 +23,20 @@ export class ItemDetailComponent implements OnInit, OnDestroy {
   public spinnerBoolean:Boolean = true;
 	public idNumber:Number;
 	public selectedItem;
-	public wishList;
 	public basketItem:Boolean;
 	public buyingList = [];
   public quantity:any;
   public recommendedItems:any;
+  public arrayOfComments:any;
+  public text:string;
 
-  constructor(private ts:ToastrService,private activateRoutes:ActivatedRoute,private itemAuth:ItemsService,private comm:ComunicationService,private rec:RecommenderService) {
+
+  constructor(private ts:ToastrService,
+              private activateRoutes:ActivatedRoute,
+              private itemAuth:ItemsService,
+              private comm:ComunicationService,
+              private rec:RecommenderService,
+              private item:ItemsService) {
     this.getParamId();
   	this.getSelectedItem();
     this.getRecommendedItems(this.idNumber)
@@ -86,23 +98,20 @@ export class ItemDetailComponent implements OnInit, OnDestroy {
   }
 
   getSelectedItem(){
-  	this.itemAuth.getItem(this.idNumber).then(res => {
-       this.spinnerBoolean = false;
-        
-  			if (Object.keys(res)[0] == 'item')
-          {
-            this.selectedItem = res[Object.keys(res)[0]][0]
-            this.quantity = res[Object.keys(res)[0]][0].number;
+  	this.itemAuth.getItem(this.idNumber).then((res:recomandationAndComments) => {
+            this.selectedItem = res.item[0];
+            this.quantity = res.item[0].number;
             this.filtersLoaded = Promise.resolve(true);
-
-          }
-        else 
-          {
-            this.selectedItem = res[Object.keys(res)[1]]
-            this.quantity = res[Object.keys(res)[0]][0].number;
-            this.filtersLoaded = Promise.resolve(true);
-          }
+            this.arrayOfComments = res.reviews;
+            this.spinnerBoolean = false;
+            this.boughtItemsList()
     });
+  }
+
+
+  boughtItemsList() {
+    let numberOfProducts:string[] = sessionStorage.getItem('buyArray') ? sessionStorage.getItem('buyArray').split(',') : [];
+    this.quantity = this.quantity - numberOfProducts.length;
   }
 
 
@@ -115,15 +124,25 @@ export class ItemDetailComponent implements OnInit, OnDestroy {
       	this.basketItem = true;
         localStorage.setItem('buyBucketList',''+this.buyingList);
         this.comm.sendObject({data:true,item:this.selectedItem.asin,numeprodus:this.selectedItem.nume});
+        this.quantity = this.quantity - 1;
       }
       else {
 
         this.ts.error('ItemsList','There are not enough items in the shop');
-      }	
-      this.quantity = this.quantity - 1;
-      if (this.quantity < 0 ){
-        this.quantity = 0;
-      } 
+      }
+  }
+
+  postReviewsForItem(){
+    let date =new Date();
+    let day = date.getDay() < 10 ? '0'+date.getDay() : date.getDay(),
+        month = date.getMonth() < 10 ? '0'+date.getMonth() : date.getMonth();
+
+    let timeOfTheReview = day + ' ' + month + ', '+date.getFullYear(),
+        reviewerID = JSON.parse(sessionStorage.getItem("currentUser")).reviewerID,
+        reviewerName = JSON.parse(sessionStorage.getItem("currentUser")).user;
+
+    this.arrayOfComments.unshift({reviewerName,summary:this.text,reviewTime:timeOfTheReview});
+    this.item.postComment(reviewerName,reviewerID,this.idNumber,this.text);
   }
 
 }

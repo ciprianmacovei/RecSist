@@ -14,9 +14,4 @@ export class HeaderComponent{
 	constructor(private auth:AuthenticationService){
 		this.loginBolean = sessionStorage.length != 0 ? true:false;
 	}
-
-	logOut(){
-		this.auth.logout();
-	}
-
 }
