@@ -2,7 +2,7 @@ const express = require('express');
 const db = require('./mongoUtil');
 const bodyParser = require('body-parser');
 const async = require('async');
-const file =  require('./moduleFunctions.js')
+const file =  require('./moduleFunctions.js');
 
 const app = express();
 

@@ -10,12 +10,11 @@ import { Subscription } from 'rxjs/Subscription';
 	templateUrl: './user-pannel.component.html',
 	styleUrls: ['./user-pannel.component.css']
 })
-export class UserPannelComponent implements OnInit {
+export class UserPannelComponent implements OnInit,OnDestroy {
 
 	public userName: String;
 	public showLoginPannel: Number;
 	public subscription: Subscription;
-	public subscription2: Subscription;
 	public basketItemBoolean: Boolean;
 	public basketItemBuy = [];
 	public itemList: String;

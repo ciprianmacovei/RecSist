@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../../models/user';
 import { Item } from '../shop-category/shop-list/item.model';
+import {Subject} from "rxjs";
 
 @Injectable()
 export class AuthenticationService {
@@ -10,6 +11,7 @@ export class AuthenticationService {
   public headers: HttpHeaders;
   public options: any;
   public itemsArray: any = {};
+  public logoutService = new Subject<boolean>();
 
   constructor(private http: HttpClient) {
     // set Token if saved in local storage ... not to login everytime :-?? tr sa decomentezi asta
@@ -21,11 +23,12 @@ export class AuthenticationService {
   }
 
   login(Email: String, Password: String) {
-    var headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     this.options = {
       headers: this.headers
-    }
-    const promise = new Promise<boolean>((resolve, reject) => {
+    };
+
+    return  new Promise<boolean>((resolve, reject) => {
       const user = new User();
       user.Email = Email;
       user.Password = Password;
@@ -43,8 +46,7 @@ export class AuthenticationService {
         }, err => {
           reject(err);
         })
-    })
-    return promise;
+    });
   }
 
   register(Email: String, Password: String) {
@@ -74,6 +76,7 @@ export class AuthenticationService {
         // this.token = null;
         // localStorage.removeItem('currentUser');
         // this.authUser = null;
+        this.logoutService.next(true);
         sessionStorage.clear();
         localStorage.clear();
         resolve(true);
