@@ -1,7 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ChategoryItemsComponent } from './chategory-items/chategory-items.component';
+import { Component, OnInit } from '@angular/core';
 import { PaginationService } from '../services/pagination.service';
-import { Router, Event, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-shop-category',
@@ -14,12 +12,11 @@ export class ShopCategoryComponent implements OnInit {
 	private totalPagini:number;
   private carouselBoolean:Boolean = true;
 
-  constructor(private pageS:PaginationService,private active:Router) {
+  constructor(private pageS:PaginationService) {
   	this.pagina = this.pageS.page;
     this.totalPagini = this.pageS.totalPages;
 
   }
-
 
   ngOnInit() {
   }

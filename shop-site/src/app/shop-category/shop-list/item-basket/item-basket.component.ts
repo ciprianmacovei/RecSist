@@ -24,8 +24,8 @@ export class ItemBasketComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.totalBasketItems = this.backetItems.length;
-
+		// this.totalBasketItems = this.backetItems.length;
+    this.totalBasketItems = this.is.arrayOfBoughtItems.length;
 	}
 
 	deleteThisItem(e) {
@@ -44,7 +44,8 @@ export class ItemBasketComponent implements OnInit {
 	boughtItems() {
     sessionStorage.getItem('buyArrayNames') ? this.backetItems = sessionStorage.getItem('buyArrayNames').split(',') : this.backetItems = [];
     sessionStorage.getItem('buyArray') ? this.itemsID = sessionStorage.getItem('buyArray').split(',') : this.itemsID = [];
-	}
+    this.backetItems = this.is.arrayOfBoughtItems;
+  }
 
 	purchaceItems() {
 		this.is.buyItems(this.itemsID).then((res) => {

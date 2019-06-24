@@ -3,6 +3,7 @@ import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import { ComunicationService } from '../services/comunication.service';
 import { Subscription } from 'rxjs/Subscription';
+import {ItemsService} from "../services/items.service";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class UserPannelComponent implements OnInit,OnDestroy {
 	public itemList: String;
 
 
-	constructor(private auth: AuthenticationService, private router: Router, private comm: ComunicationService) {
+	constructor(private auth: AuthenticationService, private router: Router, private comm: ComunicationService,private item:ItemsService) {
 		this.loginPanelName();
 		this.buyPanelItem();
 
@@ -83,6 +84,7 @@ export class UserPannelComponent implements OnInit,OnDestroy {
 		event.path[1].style.display = 'none';
 		sessionStorage.removeItem('buyArray');
 		this.itemList = '';
+		this.item.emptyItemsToArray();
 		this.basketItemBuy = [];
 
 	}

@@ -73,9 +73,6 @@ export class AuthenticationService {
   logout() {
     const promise = new Promise<Boolean>((resolve, reject) => {
       try {
-        // this.token = null;
-        // localStorage.removeItem('currentUser');
-        // this.authUser = null;
         this.logoutService.next(true);
         sessionStorage.clear();
         localStorage.clear();

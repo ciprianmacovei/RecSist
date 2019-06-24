@@ -18,7 +18,7 @@
 <br>
 
 <div *ngFor="let item of items">
-  <a class="col-sm-12 col-lg-2 col-md-4 float-left mb-2 itemclick" href="/itemDetail/{{item.asin}}" *ngIf="item.nume">
+  <a routerLink="/itemDetail/{{item.asin}}" class="col-sm-12 col-lg-2 col-md-4 float-left mb-2 itemclick" *ngIf="item.nume">
     <div class="list-group-item clearfix itemMaxWidth" >
       <div class="list-group-item-heading bg-inverse pl-1" style="border-radius: 4px;color:white">
         <p style="text-align: center">{{item?.nume.slice(0,20)}}</p>

@@ -14,7 +14,13 @@
 		<li class="list-group-item text-center active">List items</li>
 		
 	  <li class="list-group-item mt-2" *ngFor="let i of backetItems" class="listingNice">
-			<p class="my-2">	{{i}}</p>
+      <div class="card" style="width:400px">
+        <img class="card-img-top imgSize" [src]="i.imagePath" alt="Card image" >
+        <div class="card-body">
+          <p class="card-text">{{i.nume}}</p>
+        </div>
+      </div>
+<!--			<p class="my-2">	{{i.nume}}</p>-->
 			<button class="btn btn-danger mx-2 my-2" (click)="deleteThisItem($event)">X</button>
 		</li>
 

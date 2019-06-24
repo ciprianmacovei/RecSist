@@ -123,6 +123,7 @@ export class ItemDetailComponent implements OnInit, OnDestroy {
         }
       	this.basketItem = true;
         localStorage.setItem('buyBucketList',''+this.buyingList);
+        this.itemAuth.addItemsToArray(this.selectedItem);
         this.comm.sendObject({data:true,item:this.selectedItem.asin,numeprodus:this.selectedItem.nume});
         this.quantity = this.quantity - 1;
       }

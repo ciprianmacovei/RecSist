@@ -2,6 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
+interface boughtItem {
+  asin:string;
+  category:any[];
+  descriere:string;
+  imagePath:string;
+  number:number;
+  nume:string;
+  price:number;
+  related:any;
+  _id:string;
+}
+
 @Injectable()
 export class ItemsService {
 
@@ -9,9 +21,19 @@ export class ItemsService {
 	public item:any;
   public itemsOferte:any;
   public usersComments:any;
+  public arrayOfBoughtItems:boughtItem[] = [];
+
 
   constructor(private http:HttpClient,private toastr:ToastrService) { }
 
+
+  addItemsToArray(item:boughtItem) {
+    this.arrayOfBoughtItems.push(item);
+  }
+
+  emptyItemsToArray() {
+    this.arrayOfBoughtItems = [];
+  }
 
   getItem(id){
   	var headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');

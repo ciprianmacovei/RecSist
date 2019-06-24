@@ -10,15 +10,9 @@
       </div>
     </div>
   </div>
-	<!-- <ul *ngIf="results && searchQuery.length != 0 ">
-	  <li *ngFor="let result of results">
-	    <a href="" target="_blank">
-	      {{ result.nume }}
-	    </a>
-	  </li>
-	</ul> -->
+
 		
-<div class="row d-flex justify-content-center">
+<div class="row d-flex justify-content-center" *ngIf="searchBoolean">
 	<div class="list-group searchResults d-flex justify-content-center" *ngIf="results && searchQuery.length != 0">
 		  <a :href="/itemDetail/{{result.asin}}" *ngFor="let result of results"  class="list-group-item list-group-item-action flex-column align-items-start active">
         <div class="card bg-secondary">
@@ -37,7 +31,6 @@
           </div>
         <hr>
       </a>
-
 	</div>
 </div>
 </div>

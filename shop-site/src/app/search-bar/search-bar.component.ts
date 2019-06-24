@@ -15,10 +15,13 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
   results: any;
   searchTerm$ = new Subject<string>();
   public searchQuery: string;
+  public searchBoolean:Boolean;
   public subscription: Subscription;
 
 
   constructor(private searchService: SearchBarService, private elem: ElementRef) {
+
+    this.exitSearchResults();
 
     this.searchService.search(this.searchTerm$)
       .subscribe(results => {
@@ -29,9 +32,17 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
 
 
   keyUpSearch(e) {
+    this.searchBoolean = true;
     if (e.target.value !== '') {
       this.searchTerm$.next(e.target.value);
     }
+  }
+
+  exitSearchResults() {
+    let self = this;
+    $('body').on('click',function(){
+      self.searchBoolean = false;
+    })
   }
 
   ngOnInit() {

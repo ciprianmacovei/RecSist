@@ -14,3 +14,10 @@
 	max-height: 300px !important;
 	max-width: 200px !important;
 }
+
+.imgSize {
+  width: auto;
+  height: auto;
+  max-height: 200px !important;
+  max-width: 200px !important;
+}
