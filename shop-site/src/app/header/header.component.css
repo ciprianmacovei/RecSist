@@ -1,3 +1,11 @@
 .navbar-toggleable-md{
 	border-radius: 5px;
 }
+marginRightItems {
+  margin-right: 1vw;
+}
+.alignCnter {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

@@ -54,10 +54,13 @@ import { DelieveryComponent } from './delievery/delievery.component';
 import { UserPannelComponent } from './user-pannel/user-pannel.component';
 import { PermanentHeaderComponent } from './permanent-header/permanent-header.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import {ColorDirective} from './Directives/color.directive';
+import {CarouselComponent} from './carousel/carousel.component';
 
 @NgModule({
   declarations: [
-
+    CarouselComponent,
+    ColorDirective,
     AppComponent,
     HeaderComponent,
     ShopCategoryComponent,

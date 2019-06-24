@@ -1,0 +1,24 @@
+
+
+config:
+  target: 'http://localhost:8000'
+  http:
+    pool: 1
+  phases:
+    - duration: 20
+      arrivalRate: 1
+  defaults:
+    headers:
+      Accept: 'application/json'
+scenarios:
+  - flow:
+      - log: "new user is trying to login"
+      - post:
+          url: "/login"
+          json: {
+                  "Password":"asdasd",
+                  "Email":"macovei@ciprian.com"
+          }
+
+
+

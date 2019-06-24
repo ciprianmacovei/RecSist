@@ -17,21 +17,9 @@ export class ShopCategoryComponent implements OnInit {
   constructor(private pageS:PaginationService,private active:Router) {
   	this.pagina = this.pageS.page;
     this.totalPagini = this.pageS.totalPages;
-    this.showCarousel();
-    
 
   }
 
-  showCarousel(){
-    this.active.events.subscribe( (event: Event) => {
-      if (event instanceof NavigationEnd) {
-        if (this.active.url === '/home/video' || this.active.url === '/home/audio' || this.active.url === '/home/network' || this.active.url === '/home/tv'){
-          this.carouselBoolean = false;
-        }
-        else this.carouselBoolean = true;
-      }
-    });
-  }
 
   ngOnInit() {
   }

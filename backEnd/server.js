@@ -2,7 +2,7 @@ const express = require('express');
 const db = require('./mongoUtil');
 const bodyParser = require('body-parser');
 const async = require('async');
-const file =  require('./moduleFunctions.js');
+const file =  require('./moduleFunctions.js')
 
 const app = express();
 
@@ -51,22 +51,11 @@ db.connect(() => {
   });
 
 
+
+
+
   app.post("/login",function(req,res){
-    let password = req.body.Password;
-    let email = req.body.Email;
-    db.get().collection("users").find({'password':password,'username':email}).toArray(function(err,result) {
-      if (err) throw err;
-      if (result){
-        res.json({
-          ok:true,
-          user:email,
-          reviewerID:result[0].reviewerID
-        })
-      }
-      else res.json({
-        ok:false
-      })
-    });
+    file.loginToShopyfy(req,res);
   });
 
 
@@ -183,35 +172,26 @@ db.connect(() => {
   });
 
 
-  app.post("/boughItems", function(req,res){
-    let nume = JSON.parse(Object.keys(req.body)[0]).nume,
-        imagine = JSON.parse(Object.keys(req.body)[0]).imagine;
-    db.get().collection("boughItems").insertOne({nume,imagine},function(err, result) {
-      if (err) throw err;
-      console.log(result,'boughItems +1')
-    });
-  });
-
-
   app.get("/search=:nume",function(req,res){
     let numeProdus = req.params.nume;
-    db.get().collection("items").find({$text:{$search:numeProdus}}).limit(3).toArray(function(err, result) {
+    numeProdus = ".*(?i)"+numeProdus+"(?-i).*";
+    db.get().collection("items").find({"nume":{$regex:numeProdus}}).limit(3).toArray(function(err, result) {
       if (err) throw err;
-      console.log(result,'ciprian')
+      console.log(result,'ciprian');
       res.json({data : result});
     });
   });
 
-
+// FIX THIS @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   app.post("/buyItems",function(req,res){
-    let buyArray = Object.keys(req.body);
-    buyArray = buyArray[0].split(',');
-    for (i=0;i<buyArray.length;i++){
-      buyArray[i] = (buyArray[i].replace('"','')).replace('"','');
-      db.get().collection("items").update({"nume":buyArray[i]},{"$inc": { "number": -1 } },function(err, doc) {
+    let buyArray = Object.keys(req.body),
+    buyArrayNumberItems = buyArray[0].split(','),
+    productName = buyArrayNumberItems[0].replace(/'/g,"").replace(/"/g,'');
+    console.log('numarul de produse',buyArrayNumberItems.length,'product name',productName);
+      db.get().collection("items").update({"asin":productName},{"$inc": { "number":-buyArrayNumberItems.length }},function(err, doc) {
         if (err) throw err;
+        res.send(true);
       });
-    }
   });
 
   app.listen(8000, ()=>{

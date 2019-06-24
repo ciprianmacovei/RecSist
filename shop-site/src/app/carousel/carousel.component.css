@@ -1,0 +1,12 @@
+
+.pictureCarousel {
+  max-width: 600px;
+  width: auto;
+  height: 350px;
+}
+
+#carouselExampleIndicators {
+
+  border:10px solid blue;
+  border-radius: 5px;
+}

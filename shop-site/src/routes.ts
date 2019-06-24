@@ -17,10 +17,12 @@ import { ContactComponent } from './app/contact/contact.component';
 import { PricingComponent } from './app/pricing/pricing.component';
 import { DelieveryComponent } from './app/delievery/delievery.component';
 import { ForgotPasswordComponent } from './app/forgot-password/forgot-password.component';
+import {CarouselComponent} from './app/carousel/carousel.component';
 
 export const appRoutes: Routes = [
 	{
 		path: 'home', component: ShopCategoryComponent, children: [
+      { path:'', component:CarouselComponent, pathMatch:'full'},
 			{ path: 'video', component: PcSoftComponent },
 			{ path: 'audio', component: ElectClimComponent },
 			{ path: 'network', component: LapTabTelComponent },
