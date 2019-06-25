@@ -5,6 +5,7 @@ import { AuthenticationService } from '../services/authentication.service';
 import { LoginComponent } from './login.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DebugElement } from '@angular/core';
+import {ToastrModule} from "ngx-toastr";
 import { By } from '@angular/platform-browser';
 
 
@@ -19,7 +20,7 @@ describe('LoginComponent', () => {
         TestBed.configureTestingModule({
             declarations: [LoginComponent],
             providers: [AuthenticationService],
-            imports: [FormsModule, RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule]
+            imports: [FormsModule, RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule,ToastrModule.forRoot()]
         })
             .compileComponents();
     }));

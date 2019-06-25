@@ -120,9 +120,9 @@ def itemRecommender(item_id):
   df3 = df3.reset_index()
   
   reviews = df3["summaryClean"] 
-  countVector = CountVectorizer(max_features = 300, stop_words='english') 
-  transformedReviews = countVector.fit_transform(reviews) 
-  
+  countVector = CountVectorizer(max_features = 300, stop_words='english')
+  transformedReviews = countVector.fit_transform(reviews)
+
   dfReviews = DataFrame(transformedReviews.A, columns=countVector.get_feature_names())
   dfReviews = dfReviews.astype(int)
 

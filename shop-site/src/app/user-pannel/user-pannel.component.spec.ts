@@ -5,6 +5,9 @@ import { AuthenticationService } from '../services/authentication.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ComunicationService } from '../services/comunication.service';
+import {ItemsService} from "../services/items.service";
+import {ToastrModule} from "ngx-toastr";
+
 
 describe('UserPannelComponent', () => {
     let component: UserPannelComponent;
@@ -13,8 +16,8 @@ describe('UserPannelComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [UserPannelComponent],
-            providers: [AuthenticationService, ComunicationService],
-            imports: [HttpClientTestingModule, RouterTestingModule]
+            providers: [AuthenticationService, ComunicationService, ItemsService],
+            imports: [HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot()]
         })
             .compileComponents();
     }));

@@ -9,6 +9,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SearchBarService } from '../services/search-bar.service';
+import {ToastrModule} from "ngx-toastr";
+import {ItemsService} from "../services/items.service";
 
 describe('PermanentHeaderComponent', () => {
     let component: PermanentHeaderComponent;
@@ -18,9 +20,9 @@ describe('PermanentHeaderComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [PermanentHeaderComponent, UserPannelComponent, SearchBarComponent],
-            providers: [AuthenticationService, ComunicationService, SearchBarService],
+            providers: [AuthenticationService, ComunicationService, SearchBarService, ItemsService],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            imports: [FormsModule, HttpClientTestingModule, RouterTestingModule]
+            imports: [FormsModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot()]
 
         })
             .compileComponents();

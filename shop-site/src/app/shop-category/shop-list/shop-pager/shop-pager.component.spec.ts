@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ShopPagerComponent } from './shop-pager.component';
 import { PaginationService } from '../../../services/pagination.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('ShopPagerComponent', () => {
     let component: ShopPagerComponent;
@@ -12,7 +13,7 @@ describe('ShopPagerComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ShopPagerComponent],
             providers: [PaginationService],
-            imports: [HttpClientTestingModule]
+            imports: [HttpClientTestingModule, RouterTestingModule]
         })
             .compileComponents();
     }));
