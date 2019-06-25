@@ -9,17 +9,18 @@
 						<button (click)="logOut($event)" class="btn btn-sm btn-secondary">Log Out</button>
 				</div>
 		</div>
-		<hr *ngIf="basketItemBoolean" class="my-2">
-		<div *ngIf="basketItemBuy.length !=0 ">
-		<div *ngIf="basketItemBoolean" class="ml-2">
+
+  <div *ngIf="item.arrayOfBoughtItems && item.arrayOfBoughtItems.length !=0">
+		<hr  class="my-2">
+		<div class="ml-2">
 
 				<div class="float-left" >
 					<button (click)="goBasket()" class="btn btn-sm btn-success float-left mr-2">Go Basket</button>
 					<button (click)="emptryBasket($event)" class="btn btn-sm btn-danger float-right mr-2">Empty Basket</button>
 					<br>
-					<span class="badge badge-info my-2">Basket: {{basketItemBuy.length}}</span>
+					<span class="badge badge-info my-2">Basket: {{item.arrayOfBoughtItems.length}}</span>
 			
 				</div>
 		</div>
-		</div>	
+  </div>
 </div>

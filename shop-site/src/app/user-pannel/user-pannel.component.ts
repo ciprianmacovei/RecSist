@@ -71,17 +71,19 @@ export class UserPannelComponent implements OnInit,OnDestroy {
 				sessionStorage.setItem('basketItem', 'true');
 				sessionStorage.setItem('buyArray', this.basketItemBuy.toString())
 				this.basketItemBuy = sessionStorage.getItem('buyArray').split(',')
-			}
-		})
+
+      }
+		});
 		this.basketItemBoolean = sessionStorage.getItem('basketItem') === 'true';
 		if (sessionStorage.getItem('buyArray')) {
 			this.basketItemBuy = sessionStorage.getItem('buyArray').split(',');
-		}
+    }
 	}
 
 	emptryBasket(event) {
 		sessionStorage.setItem('basketItem', 'false');
 		event.path[1].style.display = 'none';
+		this.item.arrayOfBoughtItems = [];
 		sessionStorage.removeItem('buyArray');
 		this.itemList = '';
 		this.item.emptyItemsToArray();
