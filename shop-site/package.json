@@ -27,7 +27,7 @@
     "jasmine": "^3.3.1",
     "jquery": "^3.3.1",
     "karma-effroi": "0.0.0",
-    "mini-css-extract-plugin": "^0.5.0",
+    "mini-css-extract-plugin": "^2.7.2",
     "mysql": "^2.15.0",
     "ngx-bootstrap": "^3.0.1",
     "ngx-toastr": "^9.1.1",
@@ -35,11 +35,11 @@
     "rxjs-compat": "^6.3.3",
     "ts-helpers": "^1.1.1",
     "tslib": "^1.9.0",
-    "webpack": "^4.29.0",
+    "webpack": "^5.75.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.12.0",
+    "@angular-devkit/build-angular": "~15.0.4",
     "@angular/cli": "~7.2.3",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
